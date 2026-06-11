@@ -3,42 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SaaS de Anotações</title>
+  <title>Anotes.Up</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>SaaS de Anotações</h1>
-      <p>Salve e organize suas anotações de forma simples e rápida.</p>
-    </div>
-  </header>
 
-  <main class="container">
-    <section class="card">
-      <h2>Nova anotação</h2>
-      <form id="note-form">
-        <label for="title">Título</label>
-        <input type="text" id="title" name="title" placeholder="Digite um título" required />
-
-        <label for="content">Conteúdo</label>
-        <textarea id="content" name="content" rows="5" placeholder="Escreva sua anotação" required></textarea>
-
-        <button type="submit">Salvar anotação</button>
-      </form>
-    </section>
-
-    <section class="card">
-      <h2>Minhas anotações</h2>
-      <div id="notes-list" class="notes-list">
-        <p class="empty">Nenhuma anotação ainda. Adicione uma acima.</p>
+  <!-- Tela de autenticação -->
+  <div id="auth-screen" class="auth-screen">
+    <div class="auth-container">
+      <div class="auth-brand">
+        <h1>Anotes<span>.Up</span></h1>
+        <p>Suas anotações, sempre com você.</p>
       </div>
-    </section>
-  </main>
 
-  <footer>
-    <p>Projeto simples de SaaS de anotações.</p>
-  </footer>
+      <div class="auth-card">
+        <div class="auth-tabs">
+          <button class="tab-btn active" data-tab="login">Entrar</button>
+          <button class="tab-btn" data-tab="register">Criar conta</button>
+        </div>
+
+        <form id="login-form" class="auth-form">
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" placeholder="seu@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="login-password">Senha</label>
+            <input type="password" id="login-password" placeholder="••••••••" required />
+          </div>
+          <div id="login-error" class="form-error hidden"></div>
+          <button type="submit" class="btn-primary btn-full">Entrar</button>
+        </form>
+
+        <form id="register-form" class="auth-form hidden">
+          <div class="form-group">
+            <label for="reg-name">Nome</label>
+            <input type="text" id="reg-name" placeholder="Seu nome" required />
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email</label>
+            <input type="email" id="reg-email" placeholder="seu@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Senha</label>
+            <input type="password" id="reg-password" placeholder="Min. 6 caracteres" required minlength="6" />
+          </div>
+          <div id="register-error" class="form-error hidden"></div>
+          <button type="submit" class="btn-primary btn-full">Criar conta</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tela do app -->
+  <div id="app-screen" class="hidden">
+    <header class="app-header">
+      <div class="container header-content">
+        <h1 class="logo">Anotes<span>.Up</span></h1>
+        <div class="user-menu">
+          <span id="user-name" class="user-name"></span>
+          <button id="logout-btn" class="btn-logout">Sair</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>Nova anotação</h2>
+        <form id="note-form">
+          <div class="form-group">
+            <label for="title">Título</label>
+            <input type="text" id="title" placeholder="Digite um título" required />
+          </div>
+          <div class="form-group">
+            <label for="content">Conteúdo</label>
+            <textarea id="content" rows="5" placeholder="Escreva sua anotação..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Salvar anotação</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Minhas anotações</h2>
+        <div id="notes-list" class="notes-list">
+          <p class="empty">Nenhuma anotação ainda. Adicione uma acima.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Anotes.Up &mdash; suas anotações sempre seguras.</p>
+    </footer>
+  </div>
 
   <script src="app.js"></script>
 </body>

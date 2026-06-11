@@ -1,114 +1,338 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   background: #f0f4f8;
   color: #1f2937;
+  min-height: 100vh;
 }
 
-.container {
-  max-width: 960px;
-  margin: 0 auto;
+.hidden {
+  display: none !important;
+}
+
+/* ── Auth Screen ── */
+.auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #60a5fa 100%);
   padding: 20px;
 }
 
-header {
-  background: #2563eb;
-  color: white;
-  padding: 30px 0;
+.auth-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-brand {
   text-align: center;
+  margin-bottom: 28px;
+  color: white;
 }
 
-header h1 {
-  margin: 0 0 10px;
-  font-size: 2rem;
+.auth-brand h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -1px;
 }
 
-header p {
-  margin: 0;
-  opacity: 0.9;
+.auth-brand h1 span {
+  color: #bfdbfe;
+}
+
+.auth-brand p {
+  opacity: 0.85;
+  margin-top: 6px;
+  font-size: 1rem;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.auth-tabs {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 15px;
+  background: none;
+  border: none;
+  border-radius: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 2.5px solid transparent;
+  font-family: inherit;
+}
+
+.tab-btn.active {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+  background: #eff6ff;
+}
+
+.tab-btn:hover:not(.active) {
+  color: #6b7280;
+  background: #f9fafb;
+}
+
+.auth-form {
+  padding: 28px;
+}
+
+/* ── App Header ── */
+.app-header {
+  background: linear-gradient(90deg, #1e3a8a, #2563eb);
+  color: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.logo {
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.logo span {
+  color: #93c5fd;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.user-name {
+  font-size: 0.88rem;
+  opacity: 0.85;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn-logout {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 7px 16px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.btn-logout:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* ── Layout ── */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+main.container {
+  padding-top: 28px;
+  padding-bottom: 28px;
 }
 
 .card {
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.07);
+  padding: 24px;
   margin-bottom: 20px;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 18px;
+}
+
+/* ── Forms ── */
+.form-group {
+  margin-bottom: 16px;
 }
 
 label {
   display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #374151;
 }
 
 input[type="text"],
+input[type="email"],
+input[type="password"],
 textarea {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  margin-bottom: 16px;
-  font-size: 1rem;
+  padding: 11px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 9px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  background: #fafafa;
+  color: #1f2937;
 }
 
-button {
+input:focus,
+textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  background: white;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.btn-primary {
   background: #2563eb;
   color: white;
   border: none;
-  border-radius: 10px;
-  padding: 12px 20px;
+  border-radius: 9px;
+  padding: 12px 22px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  transition: background 0.2s, transform 0.1s;
 }
 
-button:hover {
+.btn-primary:hover {
   background: #1d4ed8;
 }
 
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-full {
+  width: 100%;
+  padding: 13px;
+  font-size: 1rem;
+}
+
+.form-error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+}
+
+/* ── Notes List ── */
 .notes-list {
   display: grid;
-  gap: 16px;
+  gap: 12px;
 }
 
 .note-card {
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 16px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 11px;
+  padding: 16px 18px;
   background: #fafafa;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.note-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+  border-color: #d1d5db;
+}
+
+.note-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
 .note-card h3 {
-  margin: 0 0 10px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.4;
 }
 
 .note-card p {
-  margin: 0 0 12px;
+  color: #4b5563;
+  font-size: 0.88rem;
+  line-height: 1.65;
   white-space: pre-wrap;
+  margin-bottom: 10px;
+  word-break: break-word;
 }
 
 .note-card .meta {
-  font-size: 0.9rem;
-  color: #6b7280;
-  margin-bottom: 12px;
+  font-size: 0.76rem;
+  color: #9ca3af;
 }
 
-.note-card button {
-  background: #dc2626;
+.btn-delete {
+  background: none;
+  border: 1.5px solid #fca5a5;
+  color: #ef4444;
+  border-radius: 7px;
+  padding: 4px 11px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-delete:hover {
+  background: #fef2f2;
+  border-color: #f87171;
 }
 
 .empty {
-  color: #6b7280;
+  color: #9ca3af;
   text-align: center;
-  margin: 0;
+  padding: 32px 0;
+  font-size: 0.92rem;
 }
 
 footer {
   text-align: center;
-  padding: 15px 0 40px;
-  color: #475569;
+  padding: 20px 0 40px;
+  color: #9ca3af;
+  font-size: 0.82rem;
 }
